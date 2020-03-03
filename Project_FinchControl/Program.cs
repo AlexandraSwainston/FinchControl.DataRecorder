@@ -362,7 +362,7 @@ namespace Project_FinchControl
 
             DisplayScreenHeader("Get Data");
 
-            // echo number of data points and frequency 
+            // echo number of data points and frequency7 
 
             Console.WriteLine("The Finch Robot is ready to record temperatures.");
             DisplayContinuePrompt();
