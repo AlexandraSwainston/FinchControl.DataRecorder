@@ -163,7 +163,7 @@ namespace Project_FinchControl
                     break;
 
                 case "c":
-                    minMaxThresholdValue = LightAlarmDisplaySetMinimumMaximumThresholdValue(rangeType, finchRobot);
+                    // minMaxThresholdValue = LightAlarmDisplaySetMinimumMaximumThresholdValue(rangeType, finchRobot);
                     break;
 
                 case "d":
@@ -225,7 +225,7 @@ namespace Project_FinchControl
                 if (!validResponse)
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Please enter an interger.");
+                    Console.WriteLine("Please enter a number.");
                     DisplayContinuePrompt();
                 }
             } while (!validResponse);
@@ -362,7 +362,8 @@ namespace Project_FinchControl
 
             DisplayScreenHeader("Get Data");
 
-            // echo number of data points and frequency7 
+            Console.WriteLine();
+            Console.WriteLine($"Data Points: {numberOfPoints} and Data Point Frequency: {dataPointFrequency}");
 
             Console.WriteLine("The Finch Robot is ready to record temperatures.");
             DisplayContinuePrompt();
@@ -390,41 +391,60 @@ namespace Project_FinchControl
         static double DataRecorderDisplayGetDataPointFrequency()
         {
             double dataPointFrequency;
+            bool validResponse;
 
+            do
+            {
             DisplayScreenHeader("Data Point Frequency");
 
-            Console.Write("Data Point Frequency:");
-
-
-            // validate response with a freaking do while loooooop
-            double.TryParse(Console.ReadLine(), out dataPointFrequency);
+            Console.Write("Data Point Frequency:");          
+            
+            validResponse = double.TryParse(Console.ReadLine(), out dataPointFrequency);
 
             Console.WriteLine();
             Console.WriteLine($"Data Point Frequency: {dataPointFrequency}");
-
+            
+                if (!validResponse)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Please enter a number.");
+                    DisplayContinuePrompt();
+                }            
+            } while (!validResponse);
+            
             DisplayContinuePrompt();
-
             return dataPointFrequency;
+            
         }
 
         static int DataRecorderDisplayGetNumberOfDataPoints()
         {
             int numberOfDataPoints;
+            bool validResponse;
 
+            do
+            {
             DisplayScreenHeader("Number of Data Points");
 
             Console.Write("Number of Data Points:");
 
-
-            // validate response with a freaking do while loooooop
-            int.TryParse(Console.ReadLine(), out numberOfDataPoints);
+            validResponse = int.TryParse(Console.ReadLine(), out numberOfDataPoints);
 
             Console.WriteLine();
             Console.WriteLine($"Number of Data Points: {numberOfDataPoints}");
 
+                if (!validResponse)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Please enter a number.");
+                    DisplayContinuePrompt();
+                }
+            
+            } while (!validResponse);  
+            
             DisplayContinuePrompt();
-
             return numberOfDataPoints;
+            
         }
 
 
